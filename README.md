@@ -7,8 +7,6 @@ Follow me at https://x.com/paidev
 
 > **This is NOT an official Anthropic repository.**
 
-This Snapetech fork is community maintained. [Support this fork on Ko-fi](https://ko-fi.com/snapetech).
-
 This repository contains the extracted TypeScript source code of [Anthropic's Claude Code](https://www.anthropic.com/) CLI tool — Anthropic's official CLI that lets you interact with Claude directly from the terminal to perform software engineering tasks like editing files, running commands, searching codebases, managing git workflows, and more.
 
 The source was obtained by unpacking the source map (`cli.js.map`) bundled with the officially published npm package.
