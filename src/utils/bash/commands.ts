@@ -1,5 +1,8 @@
 import { randomBytes } from 'crypto'
-import type { ControlOperator, ParseEntry } from 'shell-quote'
+import type { ParseEntry } from 'shell-quote'
+
+// Derive the operator value across bundled and DefinitelyTyped parser types.
+type ControlOperator = Extract<ParseEntry, { op: string }>['op']
 import {
   type CommandPrefixResult,
   type CommandSubcommandPrefixResult,
