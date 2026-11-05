@@ -1,6 +1,7 @@
-import type { McpbManifest } from '@anthropic-ai/mcpb'
+import type { McpbManifestAny as McpbManifest } from '@anthropic-ai/mcpb/browser'
 import { errorMessage } from '../errors.js'
 import { jsonParse } from '../slowOperations.js'
+import { checkManifestByteSize, checkManifestStructure, checkManifestTextSize } from './manifestLimits.js'
 
 /**
  * Parses and validates a DXT manifest from a JSON object.
@@ -13,8 +14,9 @@ import { jsonParse } from '../slowOperations.js'
 export async function validateManifest(
   manifestJson: unknown,
 ): Promise<McpbManifest> {
-  const { McpbManifestSchema } = await import('@anthropic-ai/mcpb')
-  const parseResult = McpbManifestSchema.safeParse(manifestJson)
+  checkManifestStructure(manifestJson)
+  const { vAny } = await import('@anthropic-ai/mcpb/browser')
+  const parseResult = vAny.McpbManifestSchema.safeParse(manifestJson)
 
   if (!parseResult.success) {
     const errors = parseResult.error.flatten()
@@ -39,6 +41,7 @@ export async function validateManifest(
 export async function parseAndValidateManifestFromText(
   manifestText: string,
 ): Promise<McpbManifest> {
+  checkManifestTextSize(manifestText)
   let manifestJson: unknown
 
   try {
@@ -56,6 +59,7 @@ export async function parseAndValidateManifestFromText(
 export async function parseAndValidateManifestFromBytes(
   manifestData: Uint8Array,
 ): Promise<McpbManifest> {
+  checkManifestByteSize(manifestData)
   const manifestText = new TextDecoder().decode(manifestData)
   return parseAndValidateManifestFromText(manifestText)
 }

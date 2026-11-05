@@ -17,6 +17,7 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
+    "test:mcpb": "bun test tests/dxt",
     "build": "node build.mjs"
   },
   "dependencies": {

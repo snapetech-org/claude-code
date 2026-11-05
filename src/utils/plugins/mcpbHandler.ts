@@ -1,7 +1,4 @@
-import type {
-  McpbManifest,
-  McpbUserConfigurationOption,
-} from '@anthropic-ai/mcpb'
+import type { McpbManifestAny as McpbManifest } from '@anthropic-ai/mcpb/browser'
 import axios from 'axios'
 import { createHash } from 'crypto'
 import { chmod, writeFile } from 'fs/promises'
@@ -32,6 +29,7 @@ export type UserConfigValues = Record<
 /**
  * User configuration schema from DXT manifest
  */
+type McpbUserConfigurationOption = NonNullable<McpbManifest['user_config']>[string]
 export type UserConfigSchema = Record<string, McpbUserConfigurationOption>
 
 /**
@@ -417,7 +415,7 @@ async function generateMcpConfig(
 ): Promise<McpServerConfig> {
   // Lazy import: @anthropic-ai/mcpb barrel pulls in zod v3 schemas (~700KB of
   // bound closures). See dxt/helpers.ts for details.
-  const { getMcpConfigForManifest } = await import('@anthropic-ai/mcpb')
+  const { getMcpConfigForManifest } = await import('@anthropic-ai/mcpb/browser')
   const mcpConfig = await getMcpConfigForManifest({
     manifest,
     extensionPath: extractedPath,
