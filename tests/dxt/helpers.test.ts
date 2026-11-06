@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { getMcpConfigForManifest } from '@anthropic-ai/mcpb/browser'
+import { getMcpConfigForManifest } from '@snapetech/mcpb-browser/browser'
 import { parseAndValidateManifestFromBytes, parseAndValidateManifestFromText, validateManifest } from '../../src/utils/dxt/helpers.js'
 import { MAX_MANIFEST_BYTES, MAX_MANIFEST_COLLECTION_ITEMS } from '../../src/utils/dxt/manifestLimits.js'
 

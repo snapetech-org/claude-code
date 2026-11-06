@@ -1,0 +1,20 @@
+{
+  "name": "@snapetech/mcpb-browser",
+  "version": "2.1.2-zod4.1",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./browser.d.ts",
+      "import": "./browser.js"
+    },
+    "./browser": {
+      "types": "./browser.d.ts",
+      "import": "./browser.js"
+    }
+  },
+  "dependencies": {
+    "zod": "^4.6.6"
+  }
+}

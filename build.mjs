@@ -40,7 +40,7 @@ function walkDir(dir, exts) {
       if (entry.isDirectory()) {
         if (entry.name === 'node_modules' || entry.name === 'dist' || entry.name === '.git' || entry.name === 'typings') continue;
         walk(full);
-      } else if (exts.some(ext => entry.name.endsWith(ext))) {
+      } else if (!entry.name.endsWith(".d.ts") && exts.some(ext => entry.name.endsWith(ext))) {
         results.push(full);
       }
     }

@@ -1,4 +1,4 @@
-import type { McpbManifestAny as McpbManifest } from '@anthropic-ai/mcpb/browser'
+import type { McpbManifestAny as McpbManifest } from '@snapetech/mcpb-browser/browser'
 import axios from 'axios'
 import { createHash } from 'crypto'
 import { chmod, writeFile } from 'fs/promises'
@@ -413,9 +413,8 @@ async function generateMcpConfig(
   extractedPath: string,
   userConfig: UserConfigValues = {},
 ): Promise<McpServerConfig> {
-  // Lazy import: @anthropic-ai/mcpb barrel pulls in zod v3 schemas (~700KB of
-  // bound closures). See dxt/helpers.ts for details.
-  const { getMcpConfigForManifest } = await import('@anthropic-ai/mcpb/browser')
+  // Keep versioned browser schemas out of sessions that do not use MCPB.
+  const { getMcpConfigForManifest } = await import('@snapetech/mcpb-browser/browser')
   const mcpConfig = await getMcpConfigForManifest({
     manifest,
     extensionPath: extractedPath,

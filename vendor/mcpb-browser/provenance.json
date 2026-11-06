@@ -1,0 +1,74 @@
+{
+  "upstreamPackage": "@anthropic-ai/mcpb",
+  "upstreamVersion": "2.1.2",
+  "upstreamArchiveIntegrity": "sha512-goRbBC8ySo7SWb7tRzr+tL6FxDc4JPTRCdgfD2omba7freofvjq5rom1lBnYHZHo6Mizs1jAHJeN53aZbDoy8A==",
+  "runtimeJavaScriptUnchanged": true,
+  "validatorDependency": "zod@^4.6.6",
+  "declarationCompiler": "typescript@5.9.3",
+  "runtimeFiles": [
+    {
+      "path": "browser.js",
+      "sha256": "26692ca556db2c12160aa2ba55ff2598ca78b58dc7f094844b6508bb0471ff20"
+    },
+    {
+      "path": "schemas/0.1.js",
+      "sha256": "10a9a46bfbabfb8735ae44e636e1634d0e4844eaa80e3edddd447d97233d7a9e"
+    },
+    {
+      "path": "schemas/0.2.js",
+      "sha256": "16c2d963792479c7e9d129fd7375195bab71c4cf9341c9a119529aaf4e3e9d84"
+    },
+    {
+      "path": "schemas/0.3.js",
+      "sha256": "9af9fa5b8d0749c6ea6ff48c022f4fc460750606bea8b793e611c82084e8d899"
+    },
+    {
+      "path": "schemas/0.4.js",
+      "sha256": "1bed7fceeadf9181a8e4e51303c6296fc69f67680c24bf250dab15add5dfb8bf"
+    },
+    {
+      "path": "schemas/any.js",
+      "sha256": "0d2d2ff0c55978b728182a857d0bfd098200ebc4867e96029ad48c620aec6184"
+    },
+    {
+      "path": "schemas/index.js",
+      "sha256": "c8af66f32330b3f49d2d306f3a6626c4a249e90359b6203f833c1851281ff514"
+    },
+    {
+      "path": "schemas_loose/0.1.js",
+      "sha256": "c3aae05c0a7b35ee37df600bdeeea75d28bc560717834a86c19e9d413f1c7d86"
+    },
+    {
+      "path": "schemas_loose/0.2.js",
+      "sha256": "59797c4612d419af338829a48e4a28df4b617079ec0f68c0304f0d8dbe7832ad"
+    },
+    {
+      "path": "schemas_loose/0.3.js",
+      "sha256": "334b248a46a3c6bcf8d99831f18e3f9e0b3801b0ed1251a59eac36c70c58d231"
+    },
+    {
+      "path": "schemas_loose/0.4.js",
+      "sha256": "aa1103aa79684e9bc888b1024524e7438712483e4709b1148d497efa00d5013b"
+    },
+    {
+      "path": "schemas_loose/index.js",
+      "sha256": "9dafacc3d7f1e0f3c88b3eda5dfdbd37ba687527e085a000494758bce120ab52"
+    },
+    {
+      "path": "shared/common.js",
+      "sha256": "ca35c58962b3c6baafb300937691358bbc9ae07c302fa83b0c6827972eb4ee39"
+    },
+    {
+      "path": "shared/config.js",
+      "sha256": "c3837ef6fb0ba1735a5e009cd438b82d44c717546ab3c547fb080b414faa2a37"
+    },
+    {
+      "path": "shared/constants.js",
+      "sha256": "80df0f6d76ed4c8d356308d709e59cb616e247fa42f97b9f6d851443326fa34c"
+    },
+    {
+      "path": "types.js",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { McpbManifestAny as McpbManifest } from '@anthropic-ai/mcpb/browser'
+import type { McpbManifestAny as McpbManifest } from '@snapetech/mcpb-browser/browser'
 import { errorMessage } from '../errors.js'
 import { jsonParse } from '../slowOperations.js'
 import { checkManifestByteSize, checkManifestStructure, checkManifestTextSize } from './manifestLimits.js'
@@ -6,16 +6,14 @@ import { checkManifestByteSize, checkManifestStructure, checkManifestTextSize } 
 /**
  * Parses and validates a DXT manifest from a JSON object.
  *
- * Lazy-imports @anthropic-ai/mcpb: that package uses zod v3 which eagerly
- * creates 24 .bind(this) closures per schema instance (~300 instances between
- * schemas.js and schemas-loose.js). Deferring the import keeps ~700KB of bound
- * closures out of the startup heap for sessions that never touch .dxt/.mcpb.
+ * Defers loading the versioned MCPB schemas until a session actually needs
+ * manifest validation. The browser compatibility library uses patched Zod 4.
  */
 export async function validateManifest(
   manifestJson: unknown,
 ): Promise<McpbManifest> {
   checkManifestStructure(manifestJson)
-  const { vAny } = await import('@anthropic-ai/mcpb/browser')
+  const { vAny } = await import('@snapetech/mcpb-browser/browser')
   const parseResult = vAny.McpbManifestSchema.safeParse(manifestJson)
 
   if (!parseResult.success) {
