@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test'
-import { vAny } from '@snapetech/mcpb-browser/browser'
+import { replaceVariables, vAny } from '@snapetech/mcpb-browser/browser'
 import { manifest, variants, versions } from './fixtures/mcpbCompatibility.js'
 
 for (const version of versions) {
@@ -12,3 +12,23 @@ for (const version of versions) {
     })
   }
 }
+
+test('MCPB placeholders treat configuration keys and replacement values literally', () => {
+  expect(replaceVariables('${user_config.a.b} ${user_config.aXb}', { 'user_config.a.b': '$& $$' })).toBe('$& $$ ${user_config.aXb}')
+  expect(replaceVariables('${user_config.[name]}', { 'user_config.[name]': 'literal' })).toBe('literal')
+})
+
+test('MCPB array-context warnings omit configuration values', () => {
+  const previous = console.warn
+  const warnings: unknown[][] = []
+  console.warn = (...args: unknown[]) => { warnings.push(args) }
+  try {
+    const input = 'fixture-private-value ${user_config.fixture}'
+    expect(replaceVariables(input, { 'user_config.fixture': ['fixture-private-secret'] })).toBe(input)
+    expect(warnings.length).toBe(1)
+    expect(JSON.stringify(warnings)).not.toContain('fixture-private-value')
+    expect(JSON.stringify(warnings)).not.toContain('fixture-private-secret')
+  } finally {
+    console.warn = previous
+  }
+})

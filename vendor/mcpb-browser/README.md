@@ -6,7 +6,10 @@ The upstream package still requires vulnerable Zod 3. No CLI, archive, signing,
 Node-only, or interactive dependencies are included. All four manifest versions
 (0.1–0.4), configuration interpolation, and browser exports remain available.
 
-Runtime JavaScript is copied unchanged from the published upstream package.
+Runtime JavaScript follows the published upstream browser modules. The config
+helper additionally treats placeholder names and replacement values literally,
+and its array-context warning omits configuration values. Provenance records
+both original and current hashes for that focused change.
 Schema declarations are regenerated against Zod 4 with TypeScript 5.9.3; public
 type-only aliases are retained. Keep LICENSE with these files.
 

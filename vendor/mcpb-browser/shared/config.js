@@ -14,14 +14,15 @@ export function replaceVariables(value, variables) {
         let result = value;
         // Replace all variables in the string
         for (const [key, replacement] of Object.entries(variables)) {
-            const pattern = new RegExp(`\\$\\{${key}\\}`, "g");
+            const literalKey = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const pattern = new RegExp(`\\$\\{${literalKey}\\}`, "g");
             // Check if this pattern actually exists in the string
             if (result.match(pattern)) {
                 if (Array.isArray(replacement)) {
-                    console.warn(`Cannot replace ${key} with array value in string context: "${value}"`, { key, replacement });
+                    console.warn("MCPB array value cannot replace a string placeholder", { variable: key });
                 }
                 else {
-                    result = result.replace(pattern, replacement);
+                    result = result.replace(pattern, () => replacement);
                 }
             }
         }

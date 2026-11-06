@@ -2,7 +2,7 @@
   "upstreamPackage": "@anthropic-ai/mcpb",
   "upstreamVersion": "2.1.2",
   "upstreamArchiveIntegrity": "sha512-goRbBC8ySo7SWb7tRzr+tL6FxDc4JPTRCdgfD2omba7freofvjq5rom1lBnYHZHo6Mizs1jAHJeN53aZbDoy8A==",
-  "runtimeJavaScriptUnchanged": true,
+  "runtimeJavaScriptUnchanged": false,
   "validatorDependency": "zod@^4.6.6",
   "declarationCompiler": "typescript@5.9.3",
   "runtimeFiles": [
@@ -60,7 +60,9 @@
     },
     {
       "path": "shared/config.js",
-      "sha256": "c3837ef6fb0ba1735a5e009cd438b82d44c717546ab3c547fb080b414faa2a37"
+      "sha256": "93755cd795c6577bcf021c32f7e2b606c2dd6172b0768a9a9fbc750307c30b7b",
+      "upstreamSha256": "c3837ef6fb0ba1735a5e009cd438b82d44c717546ab3c547fb080b414faa2a37",
+      "change": "Literal placeholder matching/replacement and configuration-safe warning"
     },
     {
       "path": "shared/constants.js",
